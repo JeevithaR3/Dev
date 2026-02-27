@@ -17,11 +17,22 @@ spec:
         image: jeevithar03/my-flask-app
         ports:
         - containerPort: 5000
-        # --- ADD THIS SECTION BELOW ---
         env:
-        - name: APP_NAME            # This is the variable name your Python code looks for
+        - name: APP_NAME
           valueFrom:
             configMapKeyRef:
-              name: flask-config    # The name of your ConfigMap
-              key: APP_NAME         # The specific key inside that ConfigMap
-        # ------------------------------
+              name: flask-config
+              key: APP_NAME
+        # --- PROBES MUST BE AT THIS INDENTATION LEVEL ---
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
