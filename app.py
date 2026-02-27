@@ -13,13 +13,15 @@
 #     # usually required to access the app from inside a Docker container or over a network.\
 #     #port=5000: This sets the specific "door" the app listens on.
 from flask import Flask
-import socket   # 👈 add this
+import socket
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return f"Hello DevOps! This is Jeevitha R 🚀 Running on {socket.gethostname()}"
+    app_name = os.getenv("APP_NAME", "Default App")
+    return f"{app_name} 🚀 Running on {socket.gethostname()}"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

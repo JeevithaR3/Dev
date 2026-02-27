@@ -17,3 +17,11 @@ spec:
         image: jeevithar03/my-flask-app
         ports:
         - containerPort: 5000
+        # --- ADD THIS SECTION BELOW ---
+        env:
+        - name: APP_NAME            # This is the variable name your Python code looks for
+          valueFrom:
+            configMapKeyRef:
+              name: flask-config    # The name of your ConfigMap
+              key: APP_NAME         # The specific key inside that ConfigMap
+        # ------------------------------
