@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-flask
+  name: flask-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: devops-flask
+      app: flask-app
   template:
     metadata:
       labels:
-        app: devops-flask
+        app: flask-app
     spec:
       containers:
-      - name: web
-        image: YOUR_DOCKERHUB_USERNAME/devops-flask:latest
+      - name: flask-container
+        image: jeevithar03/my-flask-app
         ports:
         - containerPort: 5000
