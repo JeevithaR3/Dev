@@ -1,6 +1,6 @@
-# Simple DevOps Learning Project
+# DevOps
 
-This repository contains a minimal Flask application to help you learn Docker and Kubernetes.
+This repository contains a minimal Flask application with Docker and Kubernetes.
 
 ## Structure
 
