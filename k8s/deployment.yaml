@@ -23,6 +23,13 @@ spec:
             configMapKeyRef:
               name: flask-config
               key: APP_NAME
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"        
         # --- PROBES MUST BE AT THIS INDENTATION LEVEL ---
         livenessProbe:
           httpGet:
