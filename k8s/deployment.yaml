@@ -29,8 +29,10 @@ spec:
             cpu: "100m"
           limits:
             memory: "128Mi"
-            cpu: "100m"        
+            cpu: "100m"   
+            #---Mi stands for Mebibytes. It is a unit of measurement for memory based on powers of 2, rather than powers of 10. While we often use "Megabytes" (MB) in casual conversation, computers and container orchestrators prefer binary units for precision---     
         # --- PROBES MUST BE AT THIS INDENTATION LEVEL ---
+        #--- 100m stands for millicores. Since 1 CPU core is equal to 1000m, 100m means you are requesting 10% of a single CPU core. ---
         livenessProbe:
           httpGet:
             path: /health
